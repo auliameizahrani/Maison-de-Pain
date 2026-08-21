@@ -20,7 +20,7 @@ export default function Navbar({activePage, setActivePage}) {
                 <button
                 onClick={() => handleNavClick('home')}
                 className="text-2xl font-serif font bold tracking-wide text-white text-left shrink-0">
-                    Maison de Pain <span className="text-[#C88A58">.</span>
+                    Maison de Pain <span className="text-[#C88A58]">.</span>
                 </button>
 
                 <div className="hidden md:flex flex-1 justify-center space-x-10 text-xs uppercase tracking-widest font-medium">

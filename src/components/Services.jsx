@@ -20,7 +20,7 @@ export default function Services() {
         <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-xl mx-auto mb-16">
                 <h2 className="text-3xl font-serif font-bold text-[#3B2F2F]">Our Specialities</h2>
-                <p className="text-[#7A6C65] mt-2">Dibuat khusus untuk memberikan pengalaman rasa terbaik untukmu.</p>
+                <p className="text-[#7A6C65] mt-2">Crafted especially to give you the best taste experience.</p>
                 </div>
                 <div className="grid md:grid-cols-3 gap-8">
                     {bakeryServices.map((service) => (

@@ -5,6 +5,8 @@ import PageHeader from './components/PageHeader';
 import Services from './components/Services';
 import Menu from './components/Menu';
 import ContactForm from './components/ContactForm';
+import Footer from './components/Footer';
+import AboutPage from './pages/AboutPage';
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
@@ -22,9 +24,11 @@ export default function App() {
       <main>
         {(activePage === 'home' || activePage === 'services') && <Services />}
         {(activePage === 'home' || activePage === 'menu') && <Menu />}
+        {activePage === 'about' && <AboutPage />}
         {(activePage === 'home' || activePage === 'contact') && <ContactForm />}
       </main>
 
+      <Footer/>
     </div>
   );
 }

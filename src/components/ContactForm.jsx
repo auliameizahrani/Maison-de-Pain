@@ -20,10 +20,10 @@ export default function ContactForm() {
                     Contact Us
                 </span>
                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#3B2F2F]">
-                    Kunjungi Toko Kami atau Sapa Kami!
+                    Visit Our Shop or Say Hello!
                 </h2>
                 <p className="text-[#7A6C65] text-sm leading-relaxed">
-                    Punya pertanyaan seputar pesanan khusus, catering acara, atau ingin memesan kue ulang tahun estetik? Hubungi kami langsung.
+                    Have questions about custom orders, event catering, or want to order an aesthetic birthday cake? Contact us directly.
                 </p>
 
                 <div className="space-y-4 pt-4">
@@ -32,8 +32,8 @@ export default function ContactForm() {
                             <MapPin className="w-5 h-5" />
                             </div>
                             <div>
-                                <h4 className="text-xs font-semibold text-[#7C5235] uppercase">Lokasi</h4>
-                                <p className="text-sm text-[#3B2F2F]">Jl. Senopati No. 45, Jakarta Selatan</p>
+                                <h4 className="text-xs font-semibold text-[#7C5235] uppercase">Location</h4>
+                                <p className="text-sm text-[#3B2F2F]">45 Senopati Street, South Jakarta</p>
                                 </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -41,7 +41,7 @@ export default function ContactForm() {
                                         <Phone className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <h4 className="text-xs font-semibold text-[#7C5235] uppercase">Telepon / WA</h4>
+                                        <h4 className="text-xs font-semibold text-[#7C5235] uppercase">Phone / WhatsApp</h4>
                                         <p className="text-sm text-[#3B2F2F]">+62 812-3456-7890</p>
                                     </div>
                                 </div>
@@ -59,13 +59,13 @@ export default function ContactForm() {
                             </div>
 
                             <div className="bg-[#FAF7F2] p-8 rounded-3xl shadow-sm border border-[#E8DFD8]">
-                                <h3 className="text-xl font-serif font-bold text-[#3B2F2F] mb-6">Kirim Pesan</h3>
+                                <h3 className="text-xl font-serif font-bold text-[#3B2F2F] mb-6">Send Message</h3>
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div>
-                                        <label className="block text-xs font-semibold text-[#6B5E59] mb-1">Nama Lengkap</label>
+                                        <label className="block text-xs font-semibold text-[#6B5E59] mb-1">Full Name</label>
                                         <input
                                         type="text"
-                                        placeholder="Masukkan nama kamu"
+                                        placeholder="Enter your name"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         className="w-full px-4 py-3 rounded-xl border border-[#E8DFD8] bg-white focus:outline-none focus:ring-2 focus:ring-[#7C5235]/40 text-sm"
@@ -77,7 +77,7 @@ export default function ContactForm() {
                                     <label className="block text-xs font-semibold text-[#6B5E59] mb-1">Email</label>
                                     <input
                                         type="email"
-                                        placeholder="nama@email.com"
+                                        placeholder="name@email.com"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         className="w-full px-4 py-3 rounded-xl border border-[#E8DFD8] bg-white focus:outline-none focus:ring-2 focus:ring-[#7C5235]/40 text-sm"
@@ -86,10 +86,10 @@ export default function ContactForm() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-semibold text-[#6B5E59] mb-1">Pesan</label>
+                                    <label className="block text-xs font-semibold text-[#6B5E59] mb-1">Message</label>
                                         <textarea
                                             rows="4"
-                                            placeholder="Tulis pesan atau request khusus di sini..."
+                                            placeholder="Type your message or special request here..."
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                             className="w-full px-4 py-3 rounded-xl border border-[#E8DFD8] bg-white focus:outline-none focus:ring-2 focus:ring-[#7C5235]/40 text-sm"
@@ -102,7 +102,7 @@ export default function ContactForm() {
                                         className="w-full py-3.5 bg-[#7C5235] hover:bg-[#633F27] text-white font-medium text-sm rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
                                     >
                                         <Send className="w-4 h-4" />
-                                        <span>Kirim Pesan</span>
+                                        <span>Send Message</span>
                                     </button>
                                 </form>
                             </div>

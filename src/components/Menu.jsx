@@ -14,7 +14,7 @@ export default function Menu() {
         <section id="menu" className="py-20 max-w-6xl mx-auto px-6">
             <div className="text-center max-w-xl mx-auto mb-12">
                 <h2 className="text-3xl font-serif font-bold text-[#3B2F2F]">Fresh From The Oven</h2>
-                <p className="text-[#7A6C65] mt-2 text-sm">Pilihan favorit para pengunjung toko kami minggu ini.</p>
+                <p className="text-[#7A6C65] mt-2 text-sm">Our visitors' favorite choices this week.</p>
         
                 <div className="flex justify-center gap-2 mt-8">
                     {categories.map((cat) => (

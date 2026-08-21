@@ -5,7 +5,7 @@ const slides = [
         id: 1,
         subtitle: "Welcome",
         title: "WE BAKED YOUR DESIRED ARTISAN BREAD",
-        description: "Nikmati kehangatan roti segar berkualitas tinggi yang dibuat dengan bahan organik dan penuh cinta setiap harinya.",
+        description: "Enjoy the warmth of high-quality fresh bread made with organic ingredients and full of love every day.",
         bgImage: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1920&q=80"
     },
     {

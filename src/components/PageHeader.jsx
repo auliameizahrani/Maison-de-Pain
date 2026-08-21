@@ -3,23 +3,23 @@ export default function PageHeader({title}) {
         switch (page.toLowerCase()) {
             case 'menu':
                 return {
-                    subtitle: 'Nikmati Pilihan Roti & Pastry Fresh Setiap Hari',
+                    subtitle: 'Enjoy Fresh Bread & Pastry Choices Every Day',
                     bgImage: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1920&q=80'
                 };
             case 'services':
                 return {
-                    subtitle: 'Layanan Dapur Terbaik Untuk Pengalaman Rasa Sempurna',
+                    subtitle: 'The Best Kitchen Service for a Perfect Taste Experience',
                     bgImage: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1920&q=80'
                 };
             case 'about':
                 return {
-                    subtitle: 'Cerita, Dedikasi, & Para Master Baker Di Balik Dapur Kami',
+                    subtitle: 'The Stories, Dedication, and Master Bakers Behind Our Kitchen',
                     bgImage: 'https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1920&q=80'
                 };
             case 'contact':
                 case 'contact us':
                 return {
-                    subtitle: 'Mari Terhubung dan Sapa Dapur Kami',
+                    subtitle: 'Connect with Us and Visit Our Kitchen',
                     bgImage: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1920&q=80'
                 };
             default:
