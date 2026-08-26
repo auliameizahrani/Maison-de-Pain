@@ -1,114 +1,180 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Clock, Users, Phone, Mail, MapPin, Cake, CheckCircle2 } from 'lucide-react';
 
 export default function ContactForm() {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [bookingData, setBookingData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        persons: '',
+        date: ''
+    });
 
-    const handleSubmit = (e) => {
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleBookingSubmit = (e) => {
         e.preventDefault();
-        alert(`Terima kasih ${formData.name}, pesanmu berhasil terkirim!`);
-        setFormData({ name: '', email: '', message: '' });
+        setIsSubmitted(true);
+        setBookingData({ name: '', phone: '', email: '', persons: '', date: '' });
+        
+        setTimeout(() => {
+            setIsSubmitted(false);
+        }, 5000);
     };
 
     return (
-        <section id="contact" className="py-20 bg-[#1A1716]">
+        <section id="contact" className="py-20 bg-[#1A1716] text-[#FAF7F2]">
             <div className="max-w-6xl mx-auto px-6">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
+                
+                <div className="text-center max-w-xl mx-auto mb-16">
+                    <span className="text-xs uppercase tracking-widest text-[#C88A58] font-semibold bg-[#2A2421] px-3.5 py-1.5 rounded-full">
+                        Reservation & Info
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mt-3">
+                        Book A Table & Visit Us
+                    </h2>
+                    <p className="text-[#C5B5AE] mt-2 text-sm">
+                        Reserve your spot in advance or check our store hours below.
+                    </p>
+                </div>
 
-                    <div className="space-y-6">
-                        <span className="text-xs uppercase tracking-widest text-[#C88A58] font-semibold bg-[#2A2421] px-3.5 py-1.5 rounded-full">
-                            Contact Us
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">
-                            Visit Our Shop or Say Hello!
-                        </h2>
-                        <p className="text-[#C5B5AE] text-sm leading-relaxed">
-                            Have questions about custom orders, event catering, or want to order an aesthetic birthday cake? Contact us directly.
-                        </p>
+                <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+                    
+                    <div className="bg-[#231F1E] p-8 rounded-3xl shadow-lg border border-[#3A322E] flex flex-col justify-between">
+                        <div>
+                            <h3 className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
+                                <Users className="w-5 h-5 text-[#C88A58]" />
+                                <span>Book A Table</span>
+                            </h3>
 
-                        <div className="space-y-4 pt-4">
-                            <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-[#2A2421] rounded-xl flex items-center justify-center text-[#C88A58]">
-                                    <MapPin className="w-5 h-5" />
+                            {isSubmitted && (
+                                <div className="mb-6 bg-[#2A2421] border border-[#C88A58]/40 p-4 rounded-2xl flex items-center gap-3 text-sm text-[#FAF7F2] animate-fadeIn">
+                                    <CheckCircle2 className="w-5 h-5 text-[#C88A58] flex-shrink-0" />
+                                    <span>Your table reservation request has been successfully sent! We will contact you shortly.</span>
                                 </div>
+                            )}
+                            
+                            <form onSubmit={handleBookingSubmit} className="space-y-4">
                                 <div>
-                                    <h4 className="text-xs font-semibold text-[#C88A58] uppercase">Location</h4>
-                                    <p className="text-sm text-white">45 Senopati Street, South Jakarta</p>
+                                    <input
+                                        type="text"
+                                        placeholder="Your Name"
+                                        value={bookingData.name}
+                                        onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
+                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
+                                        required
+                                    />
                                 </div>
-                            </div>
 
-                            <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-[#2A2421] rounded-xl flex items-center justify-center text-[#C88A58]">
-                                    <Phone className="w-5 h-5" />
-                                </div>
                                 <div>
-                                    <h4 className="text-xs font-semibold text-[#C88A58] uppercase">Phone / WhatsApp</h4>
-                                    <p className="text-sm text-white">+62 812-3456-7890</p>
+                                    <input
+                                        type="tel"
+                                        placeholder="Phone Number"
+                                        value={bookingData.phone}
+                                        onChange={(e) => setBookingData({ ...bookingData, phone: e.target.value })}
+                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
+                                        required
+                                    />
                                 </div>
-                            </div>
 
-                            <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-[#2A2421] rounded-xl flex items-center justify-center text-[#C88A58]">
-                                    <Mail className="w-5 h-5" />
-                                </div>
                                 <div>
-                                    <h4 className="text-xs font-semibold text-[#C88A58] uppercase">Email</h4>
-                                    <p className="text-sm text-white">hello@maisondepain.com</p>
+                                    <input
+                                        type="email"
+                                        placeholder="Your Email"
+                                        value={bookingData.email}
+                                        onChange={(e) => setBookingData({ ...bookingData, email: e.target.value })}
+                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
+                                        required
+                                    />
                                 </div>
-                            </div>
+
+                                <div>
+                                    <select
+                                        value={bookingData.persons}
+                                        onChange={(e) => setBookingData({ ...bookingData, persons: e.target.value })}
+                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
+                                        required
+                                    >
+                                        <option value="" disabled className="text-[#7A6C65]">How many persons?</option>
+                                        <option value="2" className="bg-[#1A1716] text-white py-2">2 Persons</option>
+                                        <option value="3" className="bg-[#1A1716] text-white py-2">3 Persons</option>
+                                        <option value="4" className="bg-[#1A1716] text-white py-2">4 Persons</option>
+                                        <option value="5" className="bg-[#1A1716] text-white py-2">5 Persons</option>
+                                        <option value="6" className="bg-[#1A1716] text-white py-2">6+ Persons</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <input
+                                        type="date"
+                                        value={bookingData.date}
+                                        onChange={(e) => setBookingData({ ...bookingData, date: e.target.value })}
+                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
+                                        required
+                                    />
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="w-full py-3.5 bg-[#C88A58] hover:bg-[#B27646] text-white font-medium text-sm rounded-xl transition-colors shadow-md mt-4 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer"
+                                >
+                                    <span>Book Now</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
 
-                    <div className="bg-[#231F1E] p-8 rounded-3xl shadow-lg border border-[#3A322E]">
-                        <h3 className="text-xl font-serif font-bold text-white mb-6">Send Message</h3>
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <div>
-                                <label className="block text-xs font-semibold text-[#C5B5AE] mb-1">Full Name</label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your name"
-                                    value={formData.name}
-                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full px-4 py-3 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                    required
-                                />
-                            </div>
+                    <div className="flex flex-col justify-between space-y-4">
+                        
+                        <div className="bg-[#231F1E] p-6 rounded-3xl shadow-lg border border-[#3A322E]">
+                            <h3 className="text-lg font-serif font-bold text-white mb-4 flex items-center gap-2">
+                                <Clock className="w-5 h-5 text-[#C88A58]" />
+                                <span>Store Hours</span>
+                            </h3>
+                            <ul className="space-y-3 text-sm text-[#C5B5AE]">
+                                <li className="flex justify-between border-b border-[#3A322E] pb-2">
+                                    <span>Monday – Friday</span>
+                                    <span className="text-white font-semibold">07:00 AM – 20:00 PM</span>
+                                </li>
+                                <li className="flex justify-between pb-1">
+                                    <span>Saturday – Sunday</span>
+                                    <span className="text-white font-semibold">08:00 AM – 21:00 PM</span>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <div>
-                                <label className="block text-xs font-semibold text-[#C5B5AE] mb-1">Email</label>
-                                <input
-                                    type="email"
-                                    placeholder="name@email.com"
-                                    value={formData.email}
-                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full px-4 py-3 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                    required
-                                />
+                        <div className="bg-[#231F1E] p-6 rounded-3xl shadow-lg border border-[#3A322E] space-y-3">
+                            <h3 className="text-lg font-serif font-bold text-white">Contact Info</h3>
+                            <div className="flex items-center gap-3 text-sm text-[#C5B5AE]">
+                                <MapPin className="w-4 h-4 text-[#C88A58] flex-shrink-0" />
+                                <span>45 Senopati Street, South Jakarta</span>
                             </div>
-
-                            <div>
-                                <label className="block text-xs font-semibold text-[#C5B5AE] mb-1">Message</label>
-                                <textarea
-                                    rows="4"
-                                    placeholder="Type your message or special request here..."
-                                    value={formData.message}
-                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full px-4 py-3 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                    required
-                                ></textarea>
+                            <div className="flex items-center gap-3 text-sm text-[#C5B5AE]">
+                                <Phone className="w-4 h-4 text-[#C88A58] flex-shrink-0" />
+                                <span>+62 812-3456-7890</span>
                             </div>
+                            <div className="flex items-center gap-3 text-sm text-[#C5B5AE]">
+                                <Mail className="w-4 h-4 text-[#C88A58] flex-shrink-0" />
+                                <span>hello@maisondepain.com</span>
+                            </div>
+                        </div>
 
-                            <button
-                                type="submit"
-                                className="w-full py-3.5 bg-[#C88A58] hover:bg-[#B27646] text-white font-medium text-sm rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
-                            >
-                                <Send className="w-4 h-4" />
-                                <span>Send Message</span>
-                            </button>
-                        </form>
+                        <div className="bg-[#231F1E] p-6 rounded-3xl border border-[#3A322E] flex items-start gap-4 shadow-lg">
+                            <div className="w-10 h-10 bg-[#2A2421] rounded-xl flex items-center justify-center text-[#C88A58] flex-shrink-0">
+                                <Cake className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <h4 className="text-sm font-serif font-bold text-white">Looking for Custom Birthday Cakes?</h4>
+                                <p className="text-xs text-[#C5B5AE] mt-1 leading-relaxed">
+                                    For custom cake designs, please contact us via WhatsApp at <span className="text-[#C88A58] font-semibold">+62 812-3456-7890</span> prior to ordering.
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
+
             </div>
         </section>
     );

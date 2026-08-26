@@ -8,27 +8,33 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import AboutPage from './pages/AboutPage';
 
+import { CartProvider } from './context/CartProvider';
+import CartModal from './components/CartModal';
+
 export default function App() {
   const [activePage, setActivePage] = useState('home');
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#4A3E3D]">
-      <Navbar activePage={activePage} setActivePage={setActivePage} />
+    <CartProvider>
+      <div className="min-h-screen bg-[#1A1716] text-[#FAF7F2]">
+        <Navbar activePage={activePage} setActivePage={setActivePage} />
 
-      {activePage === 'home' ? (
-        <Hero />
-      ) : (
-        <PageHeader title={activePage === 'contact' ? 'Contact Us' : activePage} />
-      )}
+        {activePage === 'home' ? (
+          <Hero />
+        ) : (
+          <PageHeader title={activePage === 'contact' ? 'Contact Us' : activePage} />
+        )}
 
-      <main>
-        {(activePage === 'home' || activePage === 'services') && <Services />}
-        {(activePage === 'home' || activePage === 'menu') && <Menu />}
-        {activePage === 'about' && <AboutPage />}
-        {(activePage === 'home' || activePage === 'contact') && <ContactForm />}
-      </main>
+        <main>
+          {(activePage === 'home' || activePage === 'services') && <Services />}
+          {(activePage === 'home' || activePage === 'menu') && <Menu />}
+          {activePage === 'about' && <AboutPage />}
+          {(activePage === 'home' || activePage === 'contact') && <ContactForm />}
+        </main>
 
-      <Footer/>
-    </div>
+        <Footer setActivePage={setActivePage} />
+        <CartModal />
+      </div>
+    </CartProvider>
   );
 }
