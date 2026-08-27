@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { menuProducts } from '../data/bakeryData';
 import { useCart } from '../context/useCart';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Menu() {
     const [activeTab, setActiveTab] = useState('All');
@@ -13,10 +14,15 @@ export default function Menu() {
         : menuProducts.filter(item => item.category === activeTab);
 
     return (
-        <section id="menu" className="py-20 bg-[#1A1716]">
+        <section id="menu" className="py-20 bg-[#1A1716] overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 
-                <div className="text-center max-w-xl mx-auto mb-12">
+                <motion.div
+                initial={{ opacity: 0, y: -15}}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px"}}
+                transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                className="text-center max-w-xl mx-auto mb-12">
                     <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">Fresh From The Oven</h2>
                     <p className="text-[#C5B5AE] mt-2 text-xs sm:text-sm">All-time visitor favorites.</p>
         
@@ -25,9 +31,9 @@ export default function Menu() {
                             <button
                                 key={cat}
                                 onClick={() => setActiveTab(cat)}
-                                className={`px-5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                                className={`px-5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer ${
                                     activeTab === cat
-                                        ? 'bg-[#C88A58] text-white shadow-sm'
+                                        ? 'bg-[#C88A58] text-white shadow-md'
                                         : 'bg-[#231F1E] text-[#C5B5AE] border border-[#3A322E] hover:bg-[#2A2421]'
                                 }`}
                             >
@@ -35,13 +41,26 @@ export default function Menu() {
                             </button>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {filteredMenu.map((item) => (
-                        <div key={item.id} className="bg-[#231F1E] rounded-2xl overflow-hidden shadow-sm border border-[#3A322E] hover:shadow-md transition-shadow flex flex-col h-full">
+                <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <AnimatePresence mode="popLayout">
+                    {filteredMenu.map((item, index) => (
+                        <motion.div
+                        key={item.id}
+                        layout
+                        initial={{ opacity: 0, scale: 0.95, y: 25}}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        exit={{ opacity: 0, scale: 0.95, y: -15 }}
+                        transition={{
+                            duration: 0.5,
+                            delay: index * 0.04,
+                            ease: [0.25, 1, 0.5, 1]
+                        }}
+                        className="bg-[#231F1E] rounded-2xl overflow-hidden shadow-sm border border-[#3A322E] hover:border-[#C88A58]/40 transition-colors flex flex-col h-full">
                             <div className="h-48 overflow-hidden">
-                                <img src={item.image} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                                <img src={item.image} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out" />
                             </div>
                             <div className="p-5 flex flex-col flex-grow">
                                 <div className="flex-grow">
@@ -59,9 +78,10 @@ export default function Menu() {
                                     <span>Add to Order</span>
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                    </AnimatePresence>
+                </motion.div>
             </div>
         </section>
     );

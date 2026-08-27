@@ -270,7 +270,7 @@ export const menuProducts = [
     },
     {
         id: 32,
-        name: "Floral Custom Cake",
+        name: "Floral Cake",
         category: "Cake",
         price: "Rp 320.000",
         desc: "Elegant aesthetic design decorated with edible flowers and buttercream.",
