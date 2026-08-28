@@ -26,9 +26,13 @@ export default function App() {
         )}
 
         <main>
+          {activePage === 'home' && <AboutPage showChef={false} />}
+          
           {(activePage === 'home' || activePage === 'services') && <Services />}
           {(activePage === 'home' || activePage === 'menu') && <Menu />}
-          {activePage === 'about' && <AboutPage />}
+          
+          {activePage === 'about' && <AboutPage showChef={true} />}
+          
           {(activePage === 'home' || activePage === 'contact') && <ContactForm />}
         </main>
 

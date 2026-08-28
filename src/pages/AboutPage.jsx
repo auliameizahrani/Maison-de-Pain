@@ -3,8 +3,9 @@ import chef1 from '../assets/chefs/chef1.jpg';
 import chef2 from '../assets/chefs/chef2.jpg';
 import chef3 from '../assets/chefs/chef3.jpg';
 import chef4 from '../assets/chefs/chef4.jpg';
+import {motion} from 'framer-motion';
 
-export default function AboutPage() {
+export default function AboutPage({showChef = true}) {
     const chefs = [
         {
             id: 1,
@@ -33,18 +34,27 @@ export default function AboutPage() {
     ];
 
     return (
-        <div className="bg-[#121111] text-white min-h-screen">
-            <section className="py-20 px-6 md:px-16 border-b border-white/10">
+        <div className="bg-[#121111] text-white">
+            <section className="py-20 px-6 md:px-16 border-b border-white/10 overflow-hidden">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div className="relative h-[350px] md:h-[450px] overflow-hidden rounded-sm">
+                    <motion.div
+                    initial={{opacity: 0, x: -40}}
+                    whileInView={{opacity: 1, x: 0}}
+                    viewport={{once: true}}
+                    transition={{duration: 0.7, ease: [0.25, 1, 0.5, 1]}}
+                    className="relative h-[350px] md:h-[450px] overflow-hidden rounded-sm">
                         <img
                             src={storeImage}
                             alt="Maison de Pain Interior"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"/>
+                    </motion.div>
 
-                    <div className="space-y-6">
+                    <motion.div
+                    initial={{opacity: 0, x:40}}
+                    whileInView={{opacity: 1, x: 0}}
+                    viewport={{once: true}}
+                    transition={{duration: 0.7, ease: [0.25, 1, 0.5, 1], delay: 0.1}}
+                    className="space-y-6">
                         <span className="text-[#C88A58] text-xs font-semibold uppercase tracking-widest">Since 2018</span>
                         <h2
                             className="text-3xl md:text-5xl font-bold tracking-wide leading-tight text-white"
@@ -54,15 +64,14 @@ export default function AboutPage() {
                         <p className="text-gray-400 text-sm md:text-base leading-relaxed font-light">
                             At Maison de Pain, we believe that the best bread comes from patience, high-quality organic ingredients, and a love for the artisan craft. Every dawn, our master bakers begin with natural fermentation without any artificial preservatives.
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
-            <section className="py-24 px-6 md:px-12 bg-[#121111]">
-                <div className="max-w-7xl mx-auto text-center space-y-3 mb-16">
-                    <h2
-                        className="text-3xl md:text-4xl font-bold tracking-widest text-white uppercase"
-                        style={{ fontFamily: "'Playfair Display', serif" }}>
+            {showChef && (
+                <section className="py-24 px-6 md:px-12 bg-[#121111]">
+                    <div className="max-w-7xl mx-auto text-center space-y-3 mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-widest text-white uppercase" style={{ fontFamily: "'Playfair Display', serif" }}>
                         OUR CHEF
                     </h2>
 
@@ -102,6 +111,7 @@ export default function AboutPage() {
                     ))}
                 </div>
             </section>
+            )}
         </div>
     )
 }
