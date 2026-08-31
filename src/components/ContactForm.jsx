@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Clock, Users, Phone, Mail, MapPin, Cake, CheckCircle2 } from 'lucide-react';
+import {motion} from 'framer-motion';
 
 export default function ContactForm() {
     const [bookingData, setBookingData] = useState({
@@ -26,7 +27,12 @@ export default function ContactForm() {
         <section id="contact" className="py-20 bg-[#1A1716] text-[#FAF7F2]">
             <div className="max-w-6xl mx-auto px-6">
                 
-                <div className="text-center max-w-xl mx-auto mb-16">
+                <motion.div
+                initial={{opacity: 0, y: -20}}
+                whileInView={{opacity: 1, y: 0}}
+                viewport={{once: true}}
+                transition={{duration: 0.6}}
+                className="text-center max-w-xl mx-auto mb-16">
                     <span className="text-xs uppercase tracking-widest text-[#C88A58] font-semibold bg-[#2A2421] px-3.5 py-1.5 rounded-full">
                         Reservation & Info
                     </span>
@@ -36,11 +42,16 @@ export default function ContactForm() {
                     <p className="text-[#C5B5AE] mt-2 text-sm">
                         Reserve your spot in advance or check our store hours below.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-                    
-                    <div className="bg-[#231F1E] p-8 rounded-3xl shadow-lg border border-[#3A322E] flex flex-col justify-between">
+
+                    <motion.div 
+                    initial={{opacity: 0, x: -40}}
+                    whileInView={{opacity: 1, x: 0}}
+                    viewport={{ once: true }}
+                    transition={{duration: 0.7, ease: [0.25, 1, 0.5, 1]}}
+                    className="bg-[#231F1E] p-8 rounded-3xl shadow-lg border border-[#3A322E] flex flex-col justify-between">
                         <div>
                             <h3 className="text-xl font-serif font-bold text-white mb-6 flex items-center gap-2">
                                 <Users className="w-5 h-5 text-[#C88A58]" />
@@ -114,17 +125,24 @@ export default function ContactForm() {
                                     />
                                 </div>
 
-                                <button
+                                <motion.button
+                                    whileHover={{scale:1.01}}
+                                    whileTap={{scale: 0.98}}
                                     type="submit"
                                     className="w-full py-3.5 bg-[#C88A58] hover:bg-[#B27646] text-white font-medium text-sm rounded-xl transition-colors shadow-md mt-4 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer"
                                 >
                                     <span>Book Now</span>
-                                </button>
+                                </motion.button>
                             </form>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="flex flex-col justify-between space-y-4">
+                    <motion.div
+                    initial={{opacity: 0, x: 40}}
+                    whileInView={{opacity: 1, x: 0}}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1], delay: 0.1}}
+                    className="flex flex-col justify-between space-y-4">
                         
                         <div className="bg-[#231F1E] p-6 rounded-3xl shadow-lg border border-[#3A322E]">
                             <h3 className="text-lg font-serif font-bold text-white mb-4 flex items-center gap-2">
@@ -171,7 +189,7 @@ export default function ContactForm() {
                             </div>
                         </div>
 
-                    </div>
+                    </motion.div>
 
                 </div>
 
