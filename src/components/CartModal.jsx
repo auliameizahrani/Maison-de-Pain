@@ -1,43 +1,33 @@
-import { useState } from 'react';
 import { X, ShoppingBag, Plus, Minus, Trash2, CheckCircle2 } from 'lucide-react';
-import { useCart } from '../context/useCart';
+import {useCartModal} from '../hooks/useCartModal';
 
 export default function CartModal() {
-    const { cart, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart, totalPrice } = useCart();
-    
-    const [isSuccess, setIsSuccess] = useState(false);
+    const {
+        cart,
+        isCartOpen,
+        isSuccess,
+        totalPrice,
+        formatRupiah,
+        handleCheckout,
+        handleClose,
+        updateQuantity,
+        removeFromCart,
+    } = useCartModal();
 
     if (!isCartOpen) return null;
-
-    const formatRupiah = (number) => {
-        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
-    };
-
-    const handleCheckout = () => {
-        setIsSuccess(true);
-
-        setTimeout(() => {
-            setIsSuccess(false);
-            setIsCartOpen(false);
-        }, 3500);
-    };
 
     return (
         <div className="fixed inset-0 z-50 flex justify-end bg-black/65 backdrop-blur-sm transition-opacity">
             <div className="w-full max-w-md bg-[#231F1E] h-full shadow-2xl flex flex-col border-l border-[#3A322E] text-white">
                 
-
                 <div className="flex items-center justify-between p-6 border-b border-[#3A322E]">
                     <div className="flex items-center gap-2">
                         <ShoppingBag className="w-5 h-5 text-[#C88A58]" />
                         <h2 className="font-serif font-bold text-lg">Your Order</h2>
                     </div>
                     <button
-                        onClick={() => {
-                            setIsSuccess(false);
-                            setIsCartOpen(false);
-                        }}
-                        className="p-2 rounded-full bg-[#2A2421] text-[#C5B5AE] hover:text-white transition"
+                        onClick={handleClose}
+                        className="p-2 rounded-full bg-[#2A2421] text-[#C5B5AE] hover:text-white transition cursor-pointer"
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -86,7 +76,7 @@ export default function CartModal() {
                                                     <Minus className="w-3 h-3" />
                                                 </button>
                                                 <span className="text-xs font-bold text-white">{item.quantity}</span>
-                                                <button 
+                                                <button
                                                     onClick={() => updateQuantity(item.id, 1)}
                                                     className="w-6 h-6 rounded-lg bg-[#2A2421] flex items-center justify-center text-[#C5B5AE] hover:text-white transition"
                                                 >

@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import { Plus } from 'lucide-react';
-import { menuProducts } from '../data/bakeryData';
 import { useCart } from '../context/useCart';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useMenu } from '../hooks/useMenu';
 
 export default function Menu() {
-    const [activeTab, setActiveTab] = useState('All');
-    const categories = ['All', 'Pastry', 'Bread', 'Beverage', 'Cake'];
+    const { activeTab, setActiveTab, categories, filteredMenu } = useMenu();
     const { addToCart } = useCart();
-    
-    const filteredMenu = activeTab === 'All'
-        ? menuProducts
-        : menuProducts.filter(item => item.category === activeTab);
 
     return (
         <section id="menu" className="py-20 bg-[#1A1716] overflow-hidden">

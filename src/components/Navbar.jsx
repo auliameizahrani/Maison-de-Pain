@@ -1,24 +1,15 @@
-import { useState } from 'react';
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '../context/useCart';
+import { useNavbar } from '../hooks/useNavbar';
 
 export default function Navbar({ activePage, setActivePage }) {
     const { totalItems, setIsCartOpen } = useCart();
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-    const navItems = [
-        { name: 'Home', id: 'home' },
-        { name: 'Menu', id: 'menu' },
-        { name: 'Services', id: 'services' },
-        { name: 'About', id: 'about' },
-        { name: 'Contact', id: 'contact' },
-    ];
-
-    const handleNavClick = (id) => {
-        setActivePage(id);
-        setIsMobileMenuOpen(false);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+    const { 
+        isMobileMenuOpen, 
+        navItems, 
+        handleNavClick, 
+        toggleMobileMenu 
+    } = useNavbar(setActivePage);
 
     return (
         <nav className="sticky top-0 z-50 bg-[#121111]/95 backdrop-blur-md border-b border-white/10 text-white">
@@ -59,7 +50,7 @@ export default function Navbar({ activePage, setActivePage }) {
                     </button>
 
                     <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        onClick={toggleMobileMenu}
                         className="md:hidden p-2.5 bg-[#231F1E] border border-white/10 text-white rounded-sm hover:text-[#C88A58] transition cursor-pointer"
                         aria-label="Toggle Menu"
                     >

@@ -1,27 +1,14 @@
-import { useState } from 'react';
 import { Clock, Users, Phone, Mail, MapPin, Cake, CheckCircle2 } from 'lucide-react';
 import {motion} from 'framer-motion';
+import { useContactForm } from '../hooks/useContactForm';
 
 export default function ContactForm() {
-    const [bookingData, setBookingData] = useState({
-        name: '',
-        phone: '',
-        email: '',
-        persons: '',
-        date: ''
-    });
-
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-    const handleBookingSubmit = (e) => {
-        e.preventDefault();
-        setIsSubmitted(true);
-        setBookingData({ name: '', phone: '', email: '', persons: '', date: '' });
-        
-        setTimeout(() => {
-            setIsSubmitted(false);
-        }, 5000);
-    };
+    const {
+        bookingData,
+        isSubmitted,
+        handleInputChange,
+        handleBookingSubmit,
+    } = useContactForm();
 
     return (
         <section id="contact" className="py-20 bg-[#1A1716] text-[#FAF7F2]">
@@ -46,7 +33,7 @@ export default function ContactForm() {
 
                 <div className="grid lg:grid-cols-2 gap-8 items-stretch">
 
-                    <motion.div 
+                    <motion.div
                     initial={{opacity: 0, x: -40}}
                     whileInView={{opacity: 1, x: 0}}
                     viewport={{ once: true }}
@@ -71,7 +58,7 @@ export default function ContactForm() {
                                         type="text"
                                         placeholder="Your Name"
                                         value={bookingData.name}
-                                        onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
+                                        onChange={(e) => handleInputChange('name', e.target.value)}
                                         className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
                                         required
                                     />
@@ -82,7 +69,7 @@ export default function ContactForm() {
                                         type="tel"
                                         placeholder="Phone Number"
                                         value={bookingData.phone}
-                                        onChange={(e) => setBookingData({ ...bookingData, phone: e.target.value })}
+                                        onChange={(e) => handleInputChange('phone', e.target.value)}
                                         className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
                                         required
                                     />
@@ -93,7 +80,7 @@ export default function ContactForm() {
                                         type="email"
                                         placeholder="Your Email"
                                         value={bookingData.email}
-                                        onChange={(e) => setBookingData({ ...bookingData, email: e.target.value })}
+                                        onChange={(e) => handleInputChange('email', e.target.value)}
                                         className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
                                         required
                                     />
@@ -102,7 +89,7 @@ export default function ContactForm() {
                                 <div>
                                     <select
                                         value={bookingData.persons}
-                                        onChange={(e) => setBookingData({ ...bookingData, persons: e.target.value })}
+                                        onChange={(e) => handleInputChange('persons', e.target.value)}
                                         className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
                                         required
                                     >
@@ -119,7 +106,7 @@ export default function ContactForm() {
                                     <input
                                         type="date"
                                         value={bookingData.date}
-                                        onChange={(e) => setBookingData({ ...bookingData, date: e.target.value })}
+                                        onChange={(e) => handleInputChange('date', e.target.value)}
                                         className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
                                         required
                                     />

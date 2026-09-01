@@ -1,19 +1,8 @@
 import { Globe, Mail } from 'lucide-react';
+import { useFooter } from '../hooks/useFooter';
 
 export default function Footer({ setActivePage }) {
-    
-    const handleFooterNav = (e, id) => {
-        e.preventDefault();
-        
-        if (setActivePage) {
-            setActivePage(id);
-        }
-
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    const { handleFooterNav } = useFooter(setActivePage);
 
     return (
         <footer className="bg-[#3B2F2F] text-[#D1C7BD] pt-16 pb-8 border-t border-[#4A3E3D]">
