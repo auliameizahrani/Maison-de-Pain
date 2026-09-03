@@ -149,18 +149,18 @@ export default function ContactForm() {
                             </h3>
                             <ul className="space-y-3 text-sm text-[#C5B5AE]">
                                 <li className="flex justify-between border-b border-[#3A322E] pb-2">
-                                    <span>Monday – Friday</span>
-                                    <span className="text-white font-semibold">07:00 AM – 20:00 PM</span>
+                                    <span>Monday - Friday</span>
+                                    <span className="text-white font-semibold">07:00 AM - 20:00 PM</span>
                                 </li>
                                 <li className="flex justify-between pb-1">
-                                    <span>Saturday – Sunday</span>
-                                    <span className="text-white font-semibold">08:00 AM – 21:00 PM</span>
+                                    <span>Saturday - Sunday</span>
+                                    <span className="text-white font-semibold">08:00 AM - 21:00 PM</span>
                                 </li>
                             </ul>
                         </div>
 
                         <div className="bg-[#231F1E] p-6 rounded-3xl shadow-lg border border-[#3A322E] space-y-3">
-                            <h3 className="text-lg font-serif font-bold text-white">Contact Info</h3>
+                            <h3 className="text-lg font-serif font-bold text-white mb-4">Contact Info</h3>
                             <div className="flex items-center gap-3 text-sm text-[#C5B5AE]">
                                 <MapPin className="w-4 h-4 text-[#C88A58] flex-shrink-0" />
                                 <span>45 Senopati Street, South Jakarta</span>
