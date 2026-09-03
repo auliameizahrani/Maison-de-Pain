@@ -1,10 +1,11 @@
 import { Clock, Users, Phone, Mail, MapPin, Cake, CheckCircle2 } from 'lucide-react';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useContactForm } from '../hooks/useContactForm';
 
 export default function ContactForm() {
     const {
         bookingData,
+        errors,
         isSubmitted,
         handleInputChange,
         handleBookingSubmit,
@@ -52,16 +53,18 @@ export default function ContactForm() {
                                 </div>
                             )}
                             
-                            <form onSubmit={handleBookingSubmit} className="space-y-4">
+                            <form onSubmit={handleBookingSubmit} className="space-y-4" noValidate>
                                 <div>
                                     <input
                                         type="text"
                                         placeholder="Your Name"
                                         value={bookingData.name}
                                         onChange={(e) => handleInputChange('name', e.target.value)}
-                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                        required
+                                        className={`w-full px-4 py-3.5 rounded-xl border bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm ${
+                                            errors?.name ? 'border-red-500' : 'border-[#3A322E]'
+                                        }`}
                                     />
+                                    {errors?.name && <p className="text-red-500 text-xs mt-1 ml-1">{errors.name}</p>}
                                 </div>
 
                                 <div>
@@ -70,9 +73,11 @@ export default function ContactForm() {
                                         placeholder="Phone Number"
                                         value={bookingData.phone}
                                         onChange={(e) => handleInputChange('phone', e.target.value)}
-                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                        required
+                                        className={`w-full px-4 py-3.5 rounded-xl border bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm ${
+                                            errors?.phone ? 'border-red-500' : 'border-[#3A322E]'
+                                        }`}
                                     />
+                                    {errors?.phone && <p className="text-red-500 text-xs mt-1 ml-1">{errors.phone}</p>}
                                 </div>
 
                                 <div>
@@ -81,17 +86,20 @@ export default function ContactForm() {
                                         placeholder="Your Email"
                                         value={bookingData.email}
                                         onChange={(e) => handleInputChange('email', e.target.value)}
-                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                        required
+                                        className={`w-full px-4 py-3.5 rounded-xl border bg-[#1A1716] text-white placeholder-[#7A6C65] focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm ${
+                                            errors?.email ? 'border-red-500' : 'border-[#3A322E]'
+                                        }`}
                                     />
+                                    {errors?.email && <p className="text-red-500 text-xs mt-1 ml-1">{errors.email}</p>}
                                 </div>
 
                                 <div>
                                     <select
                                         value={bookingData.persons}
                                         onChange={(e) => handleInputChange('persons', e.target.value)}
-                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                        required
+                                        className={`w-full px-4 py-3.5 rounded-xl border bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm ${
+                                            errors?.persons ? 'border-red-500' : 'border-[#3A322E]'
+                                        }`}
                                     >
                                         <option value="" disabled className="text-[#7A6C65]">How many persons?</option>
                                         <option value="2" className="bg-[#1A1716] text-white py-2">2 Persons</option>
@@ -100,6 +108,7 @@ export default function ContactForm() {
                                         <option value="5" className="bg-[#1A1716] text-white py-2">5 Persons</option>
                                         <option value="6" className="bg-[#1A1716] text-white py-2">6+ Persons</option>
                                     </select>
+                                    {errors?.persons && <p className="text-red-500 text-xs mt-1 ml-1">{errors.persons}</p>}
                                 </div>
 
                                 <div>
@@ -107,9 +116,11 @@ export default function ContactForm() {
                                         type="date"
                                         value={bookingData.date}
                                         onChange={(e) => handleInputChange('date', e.target.value)}
-                                        className="w-full px-4 py-3.5 rounded-xl border border-[#3A322E] bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm"
-                                        required
+                                        className={`w-full px-4 py-3.5 rounded-xl border bg-[#1A1716] text-white focus:outline-none focus:ring-2 focus:ring-[#C88A58]/40 text-sm ${
+                                            errors?.date ? 'border-red-500' : 'border-[#3A322E]'
+                                        }`}
                                     />
+                                    {errors?.date && <p className="text-red-500 text-xs mt-1 ml-1">{errors.date}</p>}
                                 </div>
 
                                 <motion.button

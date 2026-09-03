@@ -17,7 +17,7 @@ export default function PageHeader({title}) {
                     {title}
                 </h1>
 
-                <p 
+                <p
                     className="text-xs sm:text-sm text-[#E8C39E] font-light tracking-wide sm:tracking-wider max-w-xl mx-auto px-4"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >

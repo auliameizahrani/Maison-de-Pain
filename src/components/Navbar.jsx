@@ -4,11 +4,11 @@ import { useNavbar } from '../hooks/useNavbar';
 
 export default function Navbar({ activePage, setActivePage }) {
     const { totalItems, setIsCartOpen } = useCart();
-    const { 
-        isMobileMenuOpen, 
-        navItems, 
-        handleNavClick, 
-        toggleMobileMenu 
+    const {
+        isMobileMenuOpen,
+        navItems,
+        handleNavClick,
+        toggleMobileMenu
     } = useNavbar(setActivePage);
 
     return (

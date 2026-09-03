@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useCart } from '../context/useCart';
 
 export function useCartModal() {
-    const { cart, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart, totalPrice } = useCart();
+    const { cart, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart, totalPrice, clearCart } = useCart();
     const [isSuccess, setIsSuccess] = useState(false);
 
     const formatRupiah = (number) => {
@@ -11,6 +11,10 @@ export function useCartModal() {
 
     const handleCheckout = () => {
         setIsSuccess(true);
+        
+        if (clearCart) {
+            clearCart();
+        }
 
         setTimeout(() => {
             setIsSuccess(false);

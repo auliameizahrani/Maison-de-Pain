@@ -14,7 +14,7 @@ export const bakeryServices = [
     {
         id: 3,
         title: "Custom Celebration Cakes",
-        desc: "Order a birthday cake or a cake for a special occasion with an aesthetic design. Please contact our WhatsApp first for custom requests.",
+        desc: "Order a birthday cake or a cake for a special occasion with an aesthetic design.",
         iconName: "Cake",
     },
 ];
