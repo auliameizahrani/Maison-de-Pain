@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './layout/Navbar';
 import Hero from './components/Hero';
 import PageHeader from './components/PageHeader';
 import Services from './components/Services';
 import Menu from './components/Menu';
 import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
+import Footer from './layout/Footer';
 import AboutPage from './pages/AboutPage';
 
 import { CartProvider } from './context/CartProvider';
