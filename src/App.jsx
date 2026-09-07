@@ -5,6 +5,7 @@ import PageHeader from './components/PageHeader';
 import Services from './components/Services';
 import Menu from './components/Menu';
 import ContactForm from './components/ContactForm';
+import TestimonialSection from './components/TestimonialSection';
 import Footer from './layout/Footer';
 import AboutPage from './pages/AboutPage';
 
@@ -32,6 +33,8 @@ export default function App() {
           {(activePage === 'home' || activePage === 'menu') && <Menu />}
           
           {activePage === 'about' && <AboutPage showChef={true} />}
+          
+          {activePage === 'home' && <TestimonialSection />}
           
           {(activePage === 'home' || activePage === 'contact') && <ContactForm />}
         </main>
